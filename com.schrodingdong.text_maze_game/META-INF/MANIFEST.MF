@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: com.schrodingdong.text_maze_game;singleton:=true
+Automatic-Module-Name: com.schrodingdong.text_maze_game
+Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-20
+Export-Package: com.schrodingdong.text_maze_game,
+ com.schrodingdong.text_maze_game.impl,
+ com.schrodingdong.text_maze_game.util
+Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
+ org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated text_maze_game -->
+      <package
+            uri="http://www.example.org/text_maze_game"
+            class="com.schrodingdong.text_maze_game.Text_maze_gamePackage"
+            genModel="model/text_maze_game.genmodel"/>
+   </extension>
+
+</plugin>
