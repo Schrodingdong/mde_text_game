@@ -9,9 +9,16 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated text_maze_game -->
       <package
-            uri="http://www.example.org/text_maze_game"
-            class="com.schrodingdong.text_maze_game.Text_maze_gamePackage"
+            uri="com.schrodingdong.text_maze_game.gameEntity"
+            class="com.schrodingdong.text_maze_game.gameEntity.GameEntityPackage"
             genModel="model/text_maze_game.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated text_maze_game -->
+      <package
+            uri="com.schrodingdong.text_maze_game.gameLogic"
+            class="com.schrodingdong.text_maze_game.gameLogic.GameLogicPackage"
+            genModel="model/text_maze_game.genmodel"/>
+   </extension>
 </plugin>

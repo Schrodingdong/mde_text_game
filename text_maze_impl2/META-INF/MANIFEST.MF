@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Text_maze_impl2
+Bundle-SymbolicName: text_maze_impl2
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.emf.ecore;bundle-version="2.35.0",
+ org.eclipse.emf.ecore.xmi;bundle-version="2.35.0",
+ com.schrodingdong.text_maze_game;bundle-version="0.1.0"
+Automatic-Module-Name: text.maze.impl2
+Bundle-RequiredExecutionEnvironment: JavaSE-20

@@ -10,54 +10,110 @@
   <testsDirectory xsi:nil="true"/>
   <genPackages prefix="Text_maze_game" basePackage="com.schrodingdong" disposableProviderFactory="true"
       ecorePackage="text_maze_game.ecore#/">
-    <genClasses ecoreClass="text_maze_game.ecore#//Room">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text_maze_game.ecore#//Room/items"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//Room/start"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//Room/exit"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text_maze_game.ecore#//Room/neighbooringRooms"/>
-      <genOperations ecoreOperation="text_maze_game.ecore#//Room/getName" body="return this.getName_();"/>
-      <genOperations ecoreOperation="text_maze_game.ecore#//Room/roomLocationInfo"
-          body="String s = &quot;You are currently in : &quot;+this.getName_()+&quot;\n&quot;;&#xD;&#xA;return s;"/>
-    </genClasses>
-    <genClasses ecoreClass="text_maze_game.ecore#//Item">
-      <genOperations ecoreOperation="text_maze_game.ecore#//Item/getName" body="return this.getName_();"/>
-    </genClasses>
-    <genClasses ecoreClass="text_maze_game.ecore#//Player">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text_maze_game.ecore#//Player/currRoom"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text_maze_game.ecore#//Player/key"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text_maze_game.ecore#//Player/items"/>
-      <genOperations ecoreOperation="text_maze_game.ecore#//Player/pickItems" body="&#x9;&#x9;// you pick them&#xD;&#xA;&#x9;&#x9;for (Item item : currRoom.getItems()) {&#xD;&#xA;&#x9;&#x9;&#x9;getItems().add(item);&#xD;&#xA;&#x9;&#x9;&#x9;if (item instanceof Key)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;key = (Key) item;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;// you delete them from the currRoom&#xD;&#xA;&#x9;&#x9;currRoom.getItems().clear();"/>
-      <genOperations ecoreOperation="text_maze_game.ecore#//Player/move" body="currRoom = nextRoom;">
-        <genParameters ecoreParameter="text_maze_game.ecore#//Player/move/nextRoom"/>
-      </genOperations>
-      <genOperations ecoreOperation="text_maze_game.ecore#//Player/useKey" body="return key != null &amp;&amp; currRoom.isExit();"/>
-      <genOperations ecoreOperation="text_maze_game.ecore#//Player/getNeighbooringRoomMap"
-          body="&#x9;&#x9;Map&lt;Integer, Room> m = new HashMap&lt;>();&#xD;&#xA;&#x9;&#x9;int i = 1;&#xD;&#xA;&#x9;&#x9;for(Room r : currRoom.getNeighbooringRooms()) {&#xD;&#xA;&#x9;&#x9;&#x9;m.put(i++, r);&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;return m;&#xD;&#xA;"/>
-    </genClasses>
-    <genClasses ecoreClass="text_maze_game.ecore#//Key">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//Key/name"/>
-    </genClasses>
-    <genClasses ecoreClass="text_maze_game.ecore#//Bedroom">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//Bedroom/name"/>
-    </genClasses>
-    <genClasses ecoreClass="text_maze_game.ecore#//Kitchen">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//Kitchen/name"/>
-    </genClasses>
-    <genClasses ecoreClass="text_maze_game.ecore#//LivingRoom">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//LivingRoom/name"/>
-    </genClasses>
-    <genClasses ecoreClass="text_maze_game.ecore#//Corridor">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//Corridor/name"/>
-    </genClasses>
-    <genClasses ecoreClass="text_maze_game.ecore#//Hall">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//Hall/name"/>
-    </genClasses>
-    <genClasses ecoreClass="text_maze_game.ecore#//Balcony">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//Balcony/name"/>
-    </genClasses>
-    <genClasses ecoreClass="text_maze_game.ecore#//House">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text_maze_game.ecore#//House/room"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference text_maze_game.ecore#//House/player"/>
-    </genClasses>
+    <nestedGenPackages prefix="GameEntity" disposableProviderFactory="true" ecorePackage="text_maze_game.ecore#//gameEntity">
+      <genClasses ecoreClass="text_maze_game.ecore#//gameEntity/Balcony">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//gameEntity/Balcony/name"/>
+      </genClasses>
+      <genClasses ecoreClass="text_maze_game.ecore#//gameEntity/Corridor">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//gameEntity/Corridor/name"/>
+      </genClasses>
+      <genClasses ecoreClass="text_maze_game.ecore#//gameEntity/LivingRoom">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//gameEntity/LivingRoom/name"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="text_maze_game.ecore#//gameEntity/Room">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text_maze_game.ecore#//gameEntity/Room/items"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//gameEntity/Room/start"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//gameEntity/Room/exit"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference text_maze_game.ecore#//gameEntity/Room/neighbooringRooms"/>
+        <genOperations ecoreOperation="text_maze_game.ecore#//gameEntity/Room/getName"/>
+        <genOperations ecoreOperation="text_maze_game.ecore#//gameEntity/Room/roomLocationInfo"
+            body="&#x9;&#x9;String s = &quot;You are currently in : &quot; + this.getName() + &quot;\n&quot;;&#xD;&#xA;&#x9;&#x9;return s;"/>
+      </genClasses>
+      <genClasses ecoreClass="text_maze_game.ecore#//gameEntity/Hall">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//gameEntity/Hall/name"/>
+      </genClasses>
+      <genClasses ecoreClass="text_maze_game.ecore#//gameEntity/Key">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//gameEntity/Key/name"/>
+      </genClasses>
+      <genClasses ecoreClass="text_maze_game.ecore#//gameEntity/Kitchen">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//gameEntity/Kitchen/name"/>
+      </genClasses>
+      <genClasses ecoreClass="text_maze_game.ecore#//gameEntity/Bedroom">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//gameEntity/Bedroom/name"/>
+      </genClasses>
+      <genClasses ecoreClass="text_maze_game.ecore#//gameEntity/Player">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference text_maze_game.ecore#//gameEntity/Player/currRoom"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference text_maze_game.ecore#//gameEntity/Player/key"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference text_maze_game.ecore#//gameEntity/Player/items"/>
+        <genOperations ecoreOperation="text_maze_game.ecore#//gameEntity/Player/pickItems"
+            body="// you pick them&#xD;&#xA;&#x9;&#x9;for (Item item : currRoom.getItems()) {&#xD;&#xA;&#x9;&#x9;&#x9;getItems().add(item);&#xD;&#xA;&#x9;&#x9;&#x9;if (item instanceof Key)&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;key = (Key) item;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;// you delete them from the currRoom&#xD;&#xA;&#x9;&#x9;currRoom.getItems().clear();"/>
+        <genOperations ecoreOperation="text_maze_game.ecore#//gameEntity/Player/move"
+            body="currRoom = nextRoom;">
+          <genParameters ecoreParameter="text_maze_game.ecore#//gameEntity/Player/move/nextRoom"/>
+        </genOperations>
+        <genOperations ecoreOperation="text_maze_game.ecore#//gameEntity/Player/useKey"
+            body="return key != null &amp;&amp; currRoom.isExit();"/>
+        <genOperations ecoreOperation="text_maze_game.ecore#//gameEntity/Player/getNeighbooringRoomMap"
+            body="&#x9;&#x9;Map&lt;Integer, Room> m = new HashMap&lt;>();&#xD;&#xA;&#x9;&#x9;int i = 1;&#xD;&#xA;&#x9;&#x9;for (Room r : currRoom.getNeighbooringRooms()) {&#xD;&#xA;&#x9;&#x9;&#x9;m.put(i++, r);&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;return m;"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="text_maze_game.ecore#//gameEntity/Item">
+        <genOperations ecoreOperation="text_maze_game.ecore#//gameEntity/Item/getName"/>
+      </genClasses>
+      <genClasses ecoreClass="text_maze_game.ecore#//gameEntity/House">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text_maze_game.ecore#//gameEntity/House/room"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference text_maze_game.ecore#//gameEntity/House/player"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="GameLogic" disposableProviderFactory="true" ecorePackage="text_maze_game.ecore#//gameLogic">
+      <genDataTypes ecoreDataType="text_maze_game.ecore#//gameLogic/Scanner"/>
+      <genDataTypes ecoreDataType="text_maze_game.ecore#//gameLogic/collection"/>
+      <genClasses ecoreClass="text_maze_game.ecore#//gameLogic/Game">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference text_maze_game.ecore#//gameLogic/Game/action"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference text_maze_game.ecore#//gameLogic/Game/player"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference text_maze_game.ecore#//gameLogic/Game/houseRooms"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//gameLogic/Game/scanner"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute text_maze_game.ecore#//gameLogic/Game/gameFlag"/>
+        <genOperations ecoreOperation="text_maze_game.ecore#//gameLogic/Game/startGame"
+            body="if(player == null || houseRooms.isEmpty()) return;&#xD;&#xA;&#x9;&#x9;System.out.println(&quot;> Start the Game - press 0 to exit&quot;);&#xD;&#xA;&#x9;&#x9;System.out.println(&quot;=================================================&quot;);&#xD;&#xA;&#x9;&#x9;while(gameFlag) {&#xD;&#xA;&#x9;&#x9;&#x9;System.out.println(player.getCurrRoom().roomLocationInfo());&#xD;&#xA;&#x9;&#x9;&#x9;System.out.println(&quot;What do you want to do ?&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;int idx = 1;&#xD;&#xA;&#x9;&#x9;&#x9;Map&lt;Integer, Action> choiceMap = new HashMap&lt;>();&#xD;&#xA;&#x9;&#x9;&#x9;for(Action a : action) { &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if(a instanceof ItemCheck) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;System.out.println(&quot;\t &quot; + (idx++) + &quot;- Check room for items&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;} else if (a instanceof NavigationCheck) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;System.out.println(&quot;\t &quot; + (idx++) + &quot;- Navigate to the next rooms&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;} else if (a instanceof ExitCheck) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;System.out.println(&quot;\t &quot; + (idx++) + &quot;- Exit&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;choiceMap.put(idx, a);&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;try{&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;int choice = scanner.nextInt();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;for(Entry&lt;Integer,Action> e : choiceMap.entrySet()) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;if(choice == e.getKey()) &#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;e.getValue().doAction(scanner);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;} catch(InputMismatchException e) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;System.out.println(&quot;wrong input...&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;scanner.nextLine();&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;}"/>
+        <genOperations ecoreOperation="text_maze_game.ecore#//gameLogic/Game/init"
+            body="// add rooms &#xD;&#xA;&#x9;&#x9;for (Room r : rooms) {&#xD;&#xA;&#x9;&#x9;&#x9;houseRooms.add(r);&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;// init player&#xD;&#xA;&#x9;&#x9;p.setCurrRoom(startRoom);&#xD;&#xA;&#x9;&#x9;player = p;&#xD;&#xA;&#x9;&#x9;// init states&#xD;&#xA;&#x9;&#x9;GameLogicFactory fact = GameLogicFactoryImpl.eINSTANCE;&#xD;&#xA;&#x9;&#x9;ItemCheck itemCheck =  fact.createItemCheck();&#xD;&#xA;&#x9;&#x9;NavigationCheck navigationCheck =  fact.createNavigationCheck();&#xD;&#xA;&#x9;&#x9;if(player.getCurrRoom().isExit()) {&#xD;&#xA;&#x9;&#x9;&#x9;ExitCheck exitCheck = fact.createExitCheck();&#xD;&#xA;&#x9;&#x9;&#x9;action.addAll(Arrays.asList(itemCheck, navigationCheck, exitCheck));&#xD;&#xA;&#x9;&#x9;} else {&#xD;&#xA;&#x9;&#x9;&#x9;action.addAll(Arrays.asList(itemCheck, navigationCheck));&#xD;&#xA;&#x9;&#x9;}">
+          <genParameters ecoreParameter="text_maze_game.ecore#//gameLogic/Game/init/p"/>
+          <genParameters ecoreParameter="text_maze_game.ecore#//gameLogic/Game/init/startRoom"/>
+          <genParameters ecoreParameter="text_maze_game.ecore#//gameLogic/Game/init/rooms"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="text_maze_game.ecore#//gameLogic/ItemCheck">
+        <genOperations ecoreOperation="text_maze_game.ecore#//gameLogic/ItemCheck/doAction"
+            body="&#x9;&#x9;if(gameInstance.getPlayer().getCurrRoom().getItems().isEmpty()) {&#xD;&#xA;&#x9;&#x9;&#x9;System.out.println(&quot;Nothing here...&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;return;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;// List them&#xD;&#xA;&#x9;&#x9;System.out.println(&quot;You picked the following items in this room : &quot;);&#xD;&#xA;&#x9;&#x9;for(Item i : gameInstance.getPlayer().getCurrRoom().getItems()) {&#xD;&#xA;&#x9;&#x9;&#x9;System.out.println(&quot;\t- &quot; + i.getName()+&quot;\n&quot;);&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;// pick them up&#xD;&#xA;&#x9;&#x9;gameInstance.getPlayer().pickItems();">
+          <genParameters ecoreParameter="text_maze_game.ecore#//gameLogic/ItemCheck/doAction/scanner"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="text_maze_game.ecore#//gameLogic/NavigationCheck">
+        <genOperations ecoreOperation="text_maze_game.ecore#//gameLogic/NavigationCheck/doAction"
+            body="Map&lt;Integer, Room> roomMap = player.getNeighbooringRoomMap();&#xD;&#xA;&#x9;&#x9;System.out.println(&quot;Neighbooring rooms :&quot;);&#xD;&#xA;&#x9;&#x9;for(Entry&lt;Integer, Room> e : roomMap.entrySet()) {&#xD;&#xA;&#x9;&#x9;&#x9;System.out.println(&quot;\t&quot; + e.getKey()+ &quot;- &quot;+e.getValue().getName());&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#xD;&#xA;&#x9;&#x9;System.out.println(&quot;Which room (index) you want to go to ?&quot;);&#xD;&#xA;&#x9;&#x9;try {&#xD;&#xA;&#x9;&#x9;&#x9;int roomIndex = scanner.nextInt();&#xD;&#xA;&#x9;&#x9;&#x9;Room nextRoom = null;&#xD;&#xA;&#x9;&#x9;&#x9;for(Entry&lt;Integer, Room> e : roomMap.entrySet()) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;if(e.getKey() == roomIndex) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;nextRoom = e.getValue();&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;break;&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;&#x9;if(nextRoom == null) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;System.out.println(&quot;Can't Do this sowwy >.&lt;&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;} else {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;player.move(nextRoom);&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;} catch(InputMismatchException e) {&#xD;&#xA;&#x9;&#x9;&#x9;System.out.println(&quot;wrong input ...&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;scanner.nextLine();&#xD;&#xA;&#x9;&#x9;}">
+          <genParameters ecoreParameter="text_maze_game.ecore#//gameLogic/NavigationCheck/doAction/scanner"/>
+        </genOperations>
+      </genClasses>
+      <genClasses ecoreClass="text_maze_game.ecore#//gameLogic/ExitCheck">
+        <genOperations ecoreOperation="text_maze_game.ecore#//gameLogic/ExitCheck/doAction"
+            body="if(player.getCurrRoom().isExit()) {&#xD;&#xA;&#x9;&#x9;&#x9;if(player.getKey() != null) {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;System.out.println(&quot;Got out safely&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;} else {&#xD;&#xA;&#x9;&#x9;&#x9;&#x9;System.out.println(&quot;No key in possession...&quot;);&#xD;&#xA;&#x9;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;&#x9;gameInstance.setGameFlag(false);">
+          <genParameters ecoreParameter="text_maze_game.ecore#//gameLogic/ExitCheck/doAction/scanner"/>
+        </genOperations>
+      </genClasses>
+      <genClasses image="false" ecoreClass="text_maze_game.ecore#//gameLogic/Action">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference text_maze_game.ecore#//gameLogic/Action/gameInstance"/>
+        <genOperations ecoreOperation="text_maze_game.ecore#//gameLogic/Action/doAction">
+          <genParameters ecoreParameter="text_maze_game.ecore#//gameLogic/Action/doAction/scanner"/>
+        </genOperations>
+      </genClasses>
+    </nestedGenPackages>
   </genPackages>
 </genmodel:GenModel>
